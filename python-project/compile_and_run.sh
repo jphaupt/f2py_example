@@ -15,7 +15,7 @@ f2py3 -m interface_f2py -h interface_f2py.pyf ../fortran-library/*.f90
 cp ../fortran-library/libfortranlib.so .
 cp ../fortran-library/*.mod .
 
-LD_LIBRARY_PATH=$PWD;$LD_LIBRARY_PATH
+LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
 f2py3 --f90flags="-fPIC" -c interface_f2py.pyf ../fortran-library/*.o -L../fortran-library -lfortranlib --output=interface_f2py.so -m interface_f2py
 
 # workaround: rename the generated shared object file
